@@ -1,4 +1,4 @@
-ABOUT THE MDOULE
+ABOUT THE MODULE
 ================
 Between Dict is like a dictionary except the key for inserting an item is a
 range. The key for retrieval is a value that lies between two values.
