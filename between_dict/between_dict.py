@@ -1,7 +1,7 @@
 class BetweenDict(dict):
     """
     This is like a dictionary except the key is in a range between two values.
-    One specified the type of range as an interval specification.
+    One specifies the type of range as an interval specification.
 
     See the test cases for examples.
     """

@@ -11,7 +11,10 @@ https://github.com/jkugler/between_dict
 
 INSTALLATION
 ============
-Copy to somewhere in your Python sys.path
+sudo python setup.py install
+or
+python setup.py bdist_egg
+sudo easy_install dist/between_dict-0.1-py2.7.egg
 
 LICENSE
 =======

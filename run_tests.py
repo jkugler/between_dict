@@ -8,8 +8,8 @@ import unittest2 as unittest
 opd = os.path.dirname
 sys.path.insert(0, opd(os.path.abspath(__file__)))
 
-import between_dict_tests
+from between_dict import tests as bdtests
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromModule(between_dict_tests)
+    suite = unittest.TestLoader().loadTestsFromModule(bdtests)
     unittest.TextTestRunner(verbosity=2).run(suite)
