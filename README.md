@@ -1,9 +1,15 @@
 ABOUT THE MDOULE
 ================
-between_dict.py
+Between Dict is like a dictionary except the key for inserting an item is a
+range. The key for retrieval is a value that lies between two values.
+One specifies the type of range as an interval specification.
 
 ABOUT THE AUTHOR
 ================
+Joshua Kugler (joshua@azariah.com) is a programmer and system administrator
+with over 15 years of industry experience.
+Resume at: http://jjncj.com/papers/KuglerResume.pdf
+
 
 REPOSITORY
 ==========
