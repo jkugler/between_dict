@@ -13,12 +13,14 @@ class TestBetweenDict(unittest.TestCase):
         (name, op) = BetweenDict.char_to_relational('(')
         self.assertTrue(op(1,2))
         self.assertFalse(op(1,1))
+        self.assertTrue(op(1,1.000001))
         self.assertFalse(op(2,1))
 
     def test_relation_upper_exclusive(self):
         """Test )"""
         (name, op) = BetweenDict.char_to_relational(')')
         self.assertTrue(op(1,2))
+        self.assertTrue(op(1,1.000001))
         self.assertFalse(op(1,1))
         self.assertFalse(op(2,1))
 
@@ -27,12 +29,14 @@ class TestBetweenDict(unittest.TestCase):
         (name, op) = BetweenDict.char_to_relational('[')
         self.assertTrue(op(1,2))
         self.assertTrue(op(1,1))
+        self.assertTrue(op(1,1.000001))
         self.assertFalse(op(2,1))
 
     def test_relation_upper_inclusive(self):
         """Test ]"""
         (name, op) = BetweenDict.char_to_relational(']')
         self.assertTrue(op(1,2))
+        self.assertTrue(op(1,1.000001))
         self.assertTrue(op(1,1))
         self.assertFalse(op(2,1))
 
@@ -90,11 +94,34 @@ class TestBetweenDict(unittest.TestCase):
         d = BetweenDict(d={(1,3):'var'}, interval='[)')
         self.assertRaises(ValueError, d.__setitem__, '.', 1)
 
-    def test_contains_true(self):
+    def test_closed_open(self):
         d = BetweenDict(d={(1,3):'var'}, interval='[)')
+        self.assertFalse(0 in d)
+        self.assertTrue(1 in d)
         self.assertTrue(2 in d)
-
-    def test_contains_false(self):
-        d = BetweenDict(d={(1,3):'var'}, interval='[)')
+        self.assertFalse(3 in d)
         self.assertFalse(6 in d)
 
+    def test_open_open(self):
+        d = BetweenDict(d={(1,3):'var'}, interval='()')
+        self.assertFalse(0 in d)
+        self.assertFalse(1 in d)
+        self.assertTrue(2 in d)
+        self.assertFalse(3 in d)
+        self.assertFalse(6 in d)
+
+    def test_closed_closed(self):
+        d = BetweenDict(d={(1,3):'var'}, interval='[]')
+        self.assertFalse(0 in d)
+        self.assertTrue(1 in d)
+        self.assertTrue(2 in d)
+        self.assertTrue(3 in d)
+        self.assertFalse(6 in d)
+
+    def test_open_closed(self):
+        d = BetweenDict(d={(1,3):'var'}, interval='(]')
+        self.assertFalse(0 in d)
+        self.assertFalse(1 in d)
+        self.assertTrue(2 in d)
+        self.assertTrue(3 in d)
+        self.assertFalse(6 in d)
