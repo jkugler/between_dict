@@ -74,11 +74,6 @@ class TestBetweenDict(unittest.TestCase):
         d = BetweenDict(d={(1,3):'var'}, interval='[)')
         self.assertRaises(KeyError, d.__getitem__, '4')
 
-    def test_bad_setitem(self):
-        """Given backwards values, what does __setitem__ do"""
-        d = BetweenDict(d={(1,3):'var'}, interval='[)')
-        self.assertRaises(RuntimeError, d.__setitem__, (6,1), 1)
-
     def test_setitem_bad_key_one(self):
         """What happens when __setitem__ gets a bad key"""
         d = BetweenDict(d={(1,3):'var'}, interval='[)')
